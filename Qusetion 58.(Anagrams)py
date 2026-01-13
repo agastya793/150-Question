@@ -1,0 +1,20 @@
+# Write a program to check if two strings are anagrams.
+
+def are_anagrams(s1,s2):
+    #remove spaces and convert to lowercase
+    s1 =s1.replace(" ","").lower()
+    s2 = s2.replace(" ","").lower()
+
+    # if length are different , they can't be anagrams
+    if len(s1) != len(s2):
+        return False
+    
+    return sorted(s1) == sorted(s2)
+
+str1 = input("enter first string: ")
+str2 = input("enter second string: ")
+
+if are_anagrams(str1,str2):
+    print("string are anagrams")
+else:
+    print("string are not anagrams")    
