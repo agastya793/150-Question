@@ -1,0 +1,68 @@
+'''   ATM System
+
+PIN verification
+
+Balance check
+
+Withdraw
+
+Deposit'''
+
+class ATM:
+    def __init__(self,pin,balance=0):
+        self.pin = pin 
+        self.balance = balance
+
+    def check_pin(self) :
+        entered_pin = int(input("enter your pin : "))   
+        if entered_pin == self.pin:
+            return True
+        
+        else:
+            print("Wrong pin")
+            return False
+
+    def check_balance(self)  :
+        print("your balance:" , self.balance)  
+
+    def deposit(self)  :
+        amount = int(input("enter amount to deposit: "))  
+        if amount > 0:
+            self.balance += amount
+            print("Amount deposited successfully")
+        else:
+            print("Invalid amount")  
+
+    def withdraw(self):
+        amount = int(input("enter amount to withdraw: "))  
+        if amount <= self.balance:
+            self.balance -= amount
+            print("collect your cash")    
+        else:
+            print("Insufficient balance")    
+
+    def menu(self)  :
+        while True:
+            print("\n-----ATM MENU----")   
+            print("1. check balance")    
+            print("2. deposit")   
+            print("3. withdraw")
+            print("4. exit")
+
+            choice = int(input("enter your choice: "))
+
+            if choice == 1:
+                self.check_balance()
+            elif choice == 2:
+                self.deposit()    
+            elif choice == 3:
+                self.withdraw()    
+            elif choice == 4:
+                print("thank you")   
+                break
+            else:
+                print("Invalid choice") 
+
+atm = ATM(pin=4321,balance=9876789)   
+if atm.check_pin() :
+    atm.menu()
